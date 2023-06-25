@@ -87,5 +87,5 @@ Before running the script, please fill in the **Channel ID** and **User Token** 
 
 Automatically Generated Image:
 <br /><br />
-![](https://cdn.discordapp.com/attachments/1120634045009764375/1122543505663860828/danielgomes5948_aerial_view_of_a_giant_fish_tank_shaped_like_a__596f13b2-6511-4c34-a670-67ba20da7fa1.png)
+![](img/result.png)
 <br /><br />
