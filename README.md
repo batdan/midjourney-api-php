@@ -73,7 +73,11 @@ return $message->upscaled_photo_url;
 
 ## Optimal Performance: Consider Using the CLI Script
 To ensure optimal performance and avoid any potential execution time issues, we recommend utilizing the CLI (Command Line Interface) script for your task. The CLI script provides a streamlined and efficient environment, allowing for faster processing and smoother execution.
+<br /><br />
 
+Before running the script, please fill in the **Channel ID* and **User Token** in the **example.php** file:
+<br />
+![](img/credentials.png)
 <br /><br />
 ![](img/cli-php.png)
 <br /><br />
