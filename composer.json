@@ -1,0 +1,32 @@
+{
+    "name": "vw/midjourney-php",
+    "description": "Utilize the Discord API to generate images with the Midjourney Bot.",
+    "keywords": [
+        "php",
+        "image-generation",
+        "midjourney",
+        "graphics",
+        "image-processing",
+        "image-link",
+        "image-creation",
+        "image-manipulation",
+        "dynamic-images"
+    ],
+    "license": "MIT",
+
+    "autoload": {
+        "psr-4": {
+            "vw\\ai\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Gomes",
+            "email": "gomes.daniel.44@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
