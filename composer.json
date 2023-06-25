@@ -12,6 +12,9 @@
         "image-manipulation",
         "dynamic-images"
     ],
+    "extra": {
+        "readme": "README.md"
+    },
     "license": "MIT",
     "support": {
         "issues": "https://github.com/batdan/midjourney-php/issues",
