@@ -1,5 +1,5 @@
 {
-    "name": "vw/midjourney-php",
+    "name": "batdan/midjourney-php",
     "description": "Utilize the Discord API to generate images with the Midjourney Bot.",
     "keywords": [
         "php",
@@ -13,7 +13,10 @@
         "dynamic-images"
     ],
     "license": "MIT",
-
+    "support": {
+        "issues": "https://github.com/batdan/midjourney-php/issues",
+        "source": "https://github.com/batdan/midjourney-php"
+    },
     "autoload": {
         "psr-4": {
             "vw\\ai\\": "src/"

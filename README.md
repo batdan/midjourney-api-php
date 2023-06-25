@@ -70,3 +70,15 @@ return $message->upscaled_photo_url;
 
     **Important Note:** Keep your User Token strictly confidential. Anyone who has your token can take control of your Discord account. Never share it with anyone and don't publish it online. If you think your token may have been compromised, change your password immediately as this will cause your current token to become invalid.
 <br /><br />
+
+## Optimal Performance: Consider Using the CLI Script
+To ensure optimal performance and avoid any potential execution time issues, we recommend utilizing the CLI (Command Line Interface) script for your task. The CLI script provides a streamlined and efficient environment, allowing for faster processing and smoother execution.
+
+<br /><br />
+![](img/cli-php.png)
+<br /><br />
+
+Automatically Generated Image:
+<br /><br />
+![](https://cdn.discordapp.com/attachments/1120634045009764375/1122543505663860828/danielgomes5948_aerial_view_of_a_giant_fish_tank_shaped_like_a__596f13b2-6511-4c34-a670-67ba20da7fa1.png)
+<br /><br />

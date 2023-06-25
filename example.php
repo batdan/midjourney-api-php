@@ -20,4 +20,10 @@ EOF;
 
 // The process of generating and upscaling an image typically takes approximately one minute.
 $message = $midjourney->imageCreation($prompt);
-echo $message->upscaled_photo_url;
+$imgUrl  = $message->upscaled_photo_url;
+
+echo chr(10);
+echo chr(10);
+echo $imgUrl;
+echo chr(10);
+echo chr(10);
