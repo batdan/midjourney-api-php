@@ -85,8 +85,8 @@ class MidjourneyImageCreator
         // Random image selection if $upscale_index is null
         if (is_null($upscale_index)) $upscale_index = rand(0, 3);
 
-        $imagine = $this->imagine($prompt);
-        $upscaled_photo_url = $this->upscale($imagine, $upscale_index);
+        $imagine = $this->getImagine($prompt);
+        $upscaled_photo_url = $this->getUpscale($imagine, $upscale_index);
 
         return (object) [
             'imagine_message_id' => $imagine['id'],
@@ -101,7 +101,7 @@ class MidjourneyImageCreator
      * @param   string      $prompt     Prompt midjourney
      * @return  void
      */
-    public function imagine(string $prompt)
+    public function getImagine(string $prompt)
     {
         $this->uniqueId = time() - rand(0, 1000);
         $promptWithId = $prompt . ' --seed ' . $this->uniqueId;
@@ -146,7 +146,7 @@ class MidjourneyImageCreator
             $maxLoop--;
             if ($maxLoop == 0) break;
 
-            $imagine_message = $this->getImagine();
+            $imagine_message = $this->checkImagine();
             if (is_null($imagine_message)) sleep(8);
         }
 
@@ -159,7 +159,7 @@ class MidjourneyImageCreator
      * 
      * @return void
      */
-    public function getImagine()
+    public function checkImagine()
     {
         $response = $this->client->get('channels/' . $this->channelId . '/messages');
         $response = $response->getBody()->getContents();
@@ -203,7 +203,7 @@ class MidjourneyImageCreator
      * @param   integer $upscale_index      Choice of image to upscale (0.3)
      * @return  void
      */
-    public function upscale($message, int $upscale_index)
+    public function getUpscale($message, int $upscale_index)
     {
         if (!isset($message['raw_message'])) {
             error_log('Upscale requires a message object obtained from the imagine/getImagine methods.');
@@ -267,7 +267,7 @@ class MidjourneyImageCreator
      * @param   integer $upscale_index      Choice of image to upscale (0.3)
      * @return  void
      */
-    public function getUpscale($message, $upscale_index = 0)
+    public function checkUpscale($message, $upscale_index = 0)
     {
         if (!isset($message['raw_message'])) {
             error_log('Upscale requires a message object obtained from the imagine/getImagine methods.');

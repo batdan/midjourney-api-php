@@ -3,8 +3,6 @@
 This PHP library offers a user-friendly interface for creating images with the Midjourney Bot, leveraging the capabilities of the Discord API.
 
 This version has the capability to incorporate example **images via URLs** into the Midjourney prompts, providing full compatibility with both **private and public channels**.
-
-This version was inspired by the following package: https://github.com/ferranfg/midjourney-discord-api-php. After many hours of work, the project now fulfills all the needs that were not met by this initial version.
 <br /><br />
 
 ## Installation
