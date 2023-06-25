@@ -11,7 +11,7 @@ This version was inspired by the following package: https://github.com/ferranfg/
 
 You can seamlessly integrate this library into your project using Composer. To do so, execute the following command in your project's root directory:
 
-`composer require vw/midjourney-php`
+`composer require batdan/midjourney-php`
 <br /><br />
 
 ## Usage
