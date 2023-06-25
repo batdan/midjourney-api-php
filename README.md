@@ -23,7 +23,10 @@ To generate an image with the Midjourney Bot, initiate an instance of the Midjou
 ```php
 use vw\ai\MidjourneyImageCreator;
 
-$midjourneyImageCreator = new MidjourneyImageCreator($discord_channel_id, $discord_user_token);
+$discordChannelId = 'YOUR_DISCORD_CHANNEL_ID';
+$discordUserToken = 'YOUR_DISCORD_USER_TOKEN';
+
+$midjourney = new MidjourneyImageCreator($discordChannelId, $discordUserToken);
 
 // Example of a prompt
 $prompt = <<<EOF
