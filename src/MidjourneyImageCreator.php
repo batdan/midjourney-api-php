@@ -252,7 +252,7 @@ class MidjourneyImageCreator
             $maxLoop--;
             if ($maxLoop == 0) break;
 
-            $upscaled_photo_url = $this->getUpscale($message, $upscale_index);
+            $upscaled_photo_url = $this->checkUpscale($message, $upscale_index);
             if (is_null($upscaled_photo_url)) sleep(3);
         }
 
