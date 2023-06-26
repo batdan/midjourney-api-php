@@ -101,7 +101,7 @@ class MidjourneyImageCreator
      * @param   string      $prompt     Prompt midjourney
      * @return  void
      */
-    public function getImagine(string $prompt)
+    private function getImagine(string $prompt)
     {
         $this->uniqueId = time() - rand(0, 1000);
         $promptWithId = $prompt . ' --seed ' . $this->uniqueId;
@@ -159,7 +159,7 @@ class MidjourneyImageCreator
      * 
      * @return void
      */
-    public function checkImagine()
+    private function checkImagine()
     {
         $response = $this->client->get('channels/' . $this->channelId . '/messages');
         $response = $response->getBody()->getContents();
@@ -203,7 +203,7 @@ class MidjourneyImageCreator
      * @param   integer $upscale_index      Choice of image to upscale (0.3)
      * @return  void
      */
-    public function getUpscale($message, int $upscale_index)
+    private function getUpscale($message, int $upscale_index)
     {
         if (!isset($message['raw_message'])) {
             error_log('Upscale requires a message object obtained from the imagine/getImagine methods.');
@@ -267,7 +267,7 @@ class MidjourneyImageCreator
      * @param   integer $upscale_index      Choice of image to upscale (0.3)
      * @return  void
      */
-    public function checkUpscale($message, $upscale_index = 0)
+    private function checkUpscale($message, $upscale_index = 0)
     {
         if (!isset($message['raw_message'])) {
             error_log('Upscale requires a message object obtained from the imagine/getImagine methods.');
