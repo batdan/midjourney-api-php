@@ -83,6 +83,8 @@ Before running the script, please fill in the **Channel ID** and **User Token** 
 ![](img/cli-php.png)
 <br /><br />
 
+The process can take approximately one minute.
+
 Automatically Generated Image:
 <br /><br />
 ![](img/result.png)
