@@ -9,7 +9,7 @@ This version has the capability to incorporate example **images via URLs** into 
 
 You can seamlessly integrate this library into your project using Composer. To do so, execute the following command in your project's root directory:
 
-`composer require batdan/midjourney-php`
+`composer require batdan/midjourney-api-php`
 <br /><br />
 
 ## Usage
@@ -19,7 +19,7 @@ You can seamlessly integrate this library into your project using Composer. To d
 To generate an image with the Midjourney Bot, initiate an instance of the Midjourney class:
 
 ```php
-use vw\ai\MidjourneyImageCreator;
+use batdan\ai\MidjourneyImageCreator;
 
 $discordChannelId = 'YOUR_DISCORD_CHANNEL_ID';
 $discordUserToken = 'YOUR_DISCORD_USER_TOKEN';

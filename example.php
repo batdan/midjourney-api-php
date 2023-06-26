@@ -2,7 +2,7 @@
 
 include 'vendor/autoload.php';
 
-use vw\ai\MidjourneyImageCreator;
+use batdan\ai\MidjourneyImageCreator;
 
 /**
  * For retrieving the channel ID and the User Token,

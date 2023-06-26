@@ -1,6 +1,6 @@
 <?php
 
-namespace vw\ai;
+namespace batdan\ai;
 
 use GuzzleHttp\Client;
 
