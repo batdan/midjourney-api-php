@@ -22,7 +22,7 @@
     },
     "autoload": {
         "psr-4": {
-            "vw\\ai\\": "src/"
+            "batdan\\ai\\": "src/"
         }
     },
     "authors": [
