@@ -4,11 +4,13 @@
 
 | Version       | Supported          |
 | ------------- | ------------------ |
+| PHP 8.3.x     | :white_check_mark: |
+| PHP 8.2.x     | :white_check_mark: |
 | PHP 8.1.x     | :white_check_mark: |
-| PHP 8.0.x     | :x:                |
-| PHP 7.4.x     | :x:                |
-| PHP 7.3.x     | :x:                |
-| PHP 7.2.x     | :x:                |
+| PHP 8.0.x     | :white_check_mark: |
+| PHP 7.4.x     | :white_check_mark: |
+| PHP 7.3.x     | :white_check_mark: |
+| PHP 7.2.5     | :white_check_mark: |
 | Guzzle 7.5.x  | :white_check_mark: |
 | Guzzle 7.4.x  | :x:                |
 | Guzzle 7.3.x  | :x:                |
