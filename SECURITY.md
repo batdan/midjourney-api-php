@@ -18,6 +18,6 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability within this project, please send an email to security@example.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this project, please leave a message in the GitHub discussion space. All security vulnerabilities will be promptly addressed.
 
 Please do not disclose security-related issues publicly until a fix has been announced and made available. We take security seriously and appreciate your efforts to responsibly disclose your findings.
