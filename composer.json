@@ -1,6 +1,6 @@
 {
     "name": "batdan/midjourney-api-php",
-    "description": "Utilize the Discord API to generate images with the Midjourney Bot.",
+    "description": "Generate images Midjourney (Discord API). URLs in prompt accepted",
     "keywords": [
         "php",
         "image-generation",
