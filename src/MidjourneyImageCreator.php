@@ -139,8 +139,8 @@ class MidjourneyImageCreator
 
         $imagine_message = null;
 
-        // Max time loop: just over 5 minutes of waiting
-        $maxLoop = 40;
+        // Max time loop: 8 minutes of waiting
+        $maxLoop = 60;
 
         while (is_null($imagine_message)) {
             $maxLoop--;
@@ -245,8 +245,8 @@ class MidjourneyImageCreator
 
         $upscaled_photo_url = null;
 
-        // Max time loop: 3 minutes
-        $maxLoop = 60;
+        // Max time loop: 6 minutes
+        $maxLoop = 120;
 
         while (is_null($upscaled_photo_url)) {
             $maxLoop--;
