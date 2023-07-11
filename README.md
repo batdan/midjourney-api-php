@@ -26,21 +26,19 @@ $discordUserToken = 'YOUR_DISCORD_USER_TOKEN';
 
 $midjourney = new MidjourneyImageCreator($discordChannelId, $discordUserToken);
 
-// Example of a prompt
-$prompt = <<<EOF
-aerial view of a giant fish tank shaped like a tower in the middle of new york city, https://depuismonhamac.jardiland.com/wp-content/uploads/2019/06/AdobeStock_196378179.jpeg, 8k octane render, photorealistic --ar 9:20 --v 5
-EOF;
-
+// Example of a prompt: text is separated from tags
+$promptText = "aerial view of a giant fish tank shaped like a tower in the middle of new york city, https://depuismonhamac.jardiland.com/wp-content/uploads/2019/06/AdobeStock_196378179.jpeg";
+$promptTags = "8k octane render, photorealistic --ar 9:20 --v 5";
 
 /**
- * The imageCreation method is responsible for randomly selecting an image from the 4 options provided by Midjourney.
- * If you want to specify a particular image, you can pass its identifier (ranging from 0 to 3) as the second parameter.
+ * The imageCreationV2 method is responsible for randomly selecting an image from the 4 options provided by Midjourney.
+ * If you want to specify a particular image, you can pass its identifier (ranging from 0 to 3) as the third parameter.
  * 
- * Example: $midjourneyImageCreator->imageCreation($prompt, 0);
+ * Example: $midjourneyImageCreator->imageCreation($promptText, $promptTags, 0);
  *
  * This will generate an image for the given prompt, using the specified image identifier (in this case, 0).
  */
-$message = $midjourneyImageCreator->imageCreation($prompt);
+$message = $midjourney->imageCreationV2($promptText, $promptTags);
 
 return $message->upscaled_photo_url;
 ```

@@ -13,7 +13,7 @@ class MidjourneyImageCreator
 {
 
     private $apiUrl = 'https://discord.com/api/v10';    // Discord API URL
-    private $applicationId  = '936929561302675456';     // Unique ID for the application
+    private $applicationId = '936929561302675456';      // Unique ID for the application
 
     private $dataId;            // Unique ID for the command
     private $dataVersion;       // Unique Version for the command
@@ -75,6 +75,39 @@ class MidjourneyImageCreator
 
     /**
      * Global method to recover an image
+     * 
+     * In this method, I separated the textual part of the prompt and the tags.
+     * This allowed me to no longer rely on the "seed" tag to pass a uniqid necessary for retrieving images.
+     * With this method, all Midjouney prompts functionality is available
+     *
+     * @param   string      $promptText         Midjourney prompt text
+     * @param   string      $promptTags         Midjourney prompt tags
+     * @param   integer     $upscale_index      Choice of image to upscale - default: random 0.3
+     * @return  object
+     */
+    public function imageCreationV2($promptText, $promptTags, $upscale_index = null)
+    {
+        // Random image selection if $upscale_index is null
+        if (is_null($upscale_index)) $upscale_index = rand(0, 3);
+
+        // Unique ID to find the image once created
+        $this->uniqueId = time() - rand(0, 1000);
+        $prompt = $promptText . ' ' . $this->uniqueId . ' ' . $promptTags;
+
+        $imagine = $this->getImagine($prompt);
+        $upscaled_photo_url = $this->getUpscale($imagine, $upscale_index);
+
+        return (object) [
+            'imagine_message_id' => $imagine['id'],
+            'upscaled_photo_url' => $upscaled_photo_url
+        ];
+    }
+
+
+    /**
+     * Global method to recover an image
+     * 
+     * This method has been kept to ensure backward compatibility of projects using it
      *
      * @param   string      $prompt             Midjourney prompt
      * @param   integer     $upscale_index      Choice of image to upscale - default: random 0.3
@@ -84,6 +117,10 @@ class MidjourneyImageCreator
     {
         // Random image selection if $upscale_index is null
         if (is_null($upscale_index)) $upscale_index = rand(0, 3);
+
+        // Unique ID to find the image once created
+        $this->uniqueId = time() - rand(0, 1000);
+        $prompt = $prompt . ' --seed ' . $this->uniqueId;
 
         $imagine = $this->getImagine($prompt);
         $upscaled_photo_url = $this->getUpscale($imagine, $upscale_index);
@@ -103,9 +140,6 @@ class MidjourneyImageCreator
      */
     private function getImagine(string $prompt)
     {
-        $this->uniqueId = time() - rand(0, 1000);
-        $promptWithId = $prompt . ' --seed ' . $this->uniqueId;
-
         $params = [
             'type'              => 2,
             'application_id'    => $this->applicationId,
@@ -121,7 +155,7 @@ class MidjourneyImageCreator
                     [
                         'type'  => 3,
                         'name'  => 'prompt',
-                        'value' => $promptWithId
+                        'value' => $prompt
                     ],
                 ],
             ],
