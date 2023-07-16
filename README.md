@@ -39,8 +39,11 @@ $promptTags = "8k octane render, photorealistic --ar 9:20 --v 5";
  * This will generate an image for the given prompt, using the specified image identifier (in this case, 0).
  */
 $message = $midjourney->imageCreationV2($promptText, $promptTags);
+$imgUrl  = $message->upscaled_photo_url;
 
-return $message->upscaled_photo_url;
+echo chr(10) . chr(10);
+echo $imgUrl;
+echo chr(10) . chr(10);
 ```
 <br />
 
