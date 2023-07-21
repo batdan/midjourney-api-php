@@ -27,6 +27,9 @@ class MidjourneyImageCreator
 
     private $uniqueId;          // Unique ID for the prompt
 
+    private $countProcess;      // Number of processes to be launched
+    private $limitProcess;      // Limitation of the number of processes to be launched
+
 
     /**
      * Constructor
@@ -36,6 +39,9 @@ class MidjourneyImageCreator
      */
     public function __construct($discordChannelId, $discordUserToken)
     {
+        // Limitation of the number of processes to be launched
+        $this->limitProcess = 3;
+        
         $this->sessionId = md5(uniqid());
 
         $this->channelId = $discordChannelId;
@@ -87,6 +93,17 @@ class MidjourneyImageCreator
      */
     public function imageCreationV2($promptText, $promptTags, $upscale_index = null)
     {
+        // Check number of processes and wait if necessary
+        $checkCountProcess = $this->checkCountProcess();
+        if (!$checkCountProcess) {
+            return (object) [
+                'imagine_message_id' => null,
+                'upscaled_photo_url' => null
+            ];
+        }
+
+        $this->countProcess++;
+        
         // Random image selection if $upscale_index is null
         if (is_null($upscale_index)) $upscale_index = rand(0, 3);
 
@@ -96,6 +113,8 @@ class MidjourneyImageCreator
 
         $imagine = $this->getImagine($prompt);
         $upscaled_photo_url = $this->getUpscale($imagine, $upscale_index);
+
+        $this->countProcess--;
 
         return (object) [
             'imagine_message_id' => $imagine['id'],
@@ -115,6 +134,17 @@ class MidjourneyImageCreator
      */
     public function imageCreation($prompt, $upscale_index = null)
     {
+        // Check number of processes and wait if necessary
+        $checkCountProcess = $this->checkCountProcess();
+        if (!$checkCountProcess) {
+            return (object) [
+                'imagine_message_id' => null,
+                'upscaled_photo_url' => null
+            ];
+        }
+
+        $this->countProcess++;
+        
         // Random image selection if $upscale_index is null
         if (is_null($upscale_index)) $upscale_index = rand(0, 3);
 
@@ -125,10 +155,31 @@ class MidjourneyImageCreator
         $imagine = $this->getImagine($prompt);
         $upscaled_photo_url = $this->getUpscale($imagine, $upscale_index);
 
+        $this->countProcess--;
+
         return (object) [
             'imagine_message_id' => $imagine['id'],
             'upscaled_photo_url' => $upscaled_photo_url
         ];
+    }
+
+
+    /**
+     * Method to check the number of processes and wait if necessary
+     * @return  boolean
+     */
+    private function checkCountProcess()
+    {
+        $maxLoop = 30;
+        $nbLoop  = 0;
+
+        while ($this->countProcess == $this->limitProcess) {
+            if ($nbLoop == $maxLoop) return false;
+            sleep(30);
+            $nbLoop++;
+        }
+
+        return true;
     }
 
 
