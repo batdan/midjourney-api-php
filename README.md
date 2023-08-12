@@ -45,6 +45,47 @@ echo chr(10) . chr(10);
 echo $imgUrl;
 echo chr(10) . chr(10);
 ```
+
+
+Docker web API:
+
+```bash
+
+export DISCORD_CHANNEL_ID=""
+export USER_TOKEN=""
+
+docker run -v $PWD:/app -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN  composer:latest /app/runserver.sh &
+
+curl -X POST -H "Content-Type: application/json" -d '{"prompt": "a bunny in a garden", "tags": "8k octane render, photorealistic --ar 7:4 --v 5 "}' http://localhost:8062/
+
+docker ps
+
+docker stop [CONTAINER ID]
+
+```
+
+or
+
+
+```bash
+docker build .  -t midjourney-api-php
+
+export DISCORD_CHANNEL_ID=""
+export USER_TOKEN=""
+
+docker run -d -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN midjourney-api-php:latest
+
+```
+
+Testing
+
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"prompt": "a bunny in a garden", "tags": "8k octane render, photorealistic --ar 7:4 --v 5 "}' http://localhost:8062/
+```
+
+
+
 <br />
 
 ### Constructor
