@@ -47,24 +47,9 @@ echo chr(10) . chr(10);
 ```
 
 
+
+
 Docker web API:
-
-```bash
-
-export DISCORD_CHANNEL_ID=""
-export USER_TOKEN=""
-
-docker run -v $PWD:/app -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN  composer:latest /app/runserver.sh &
-
-curl -X POST -H "Content-Type: application/json" -d '{"prompt": "a bunny in a garden", "tags": "8k octane render, photorealistic --ar 7:4 --v 5 "}' http://localhost:8062/
-
-docker ps
-
-docker stop [CONTAINER ID]
-
-```
-
-or
 
 
 ```bash
@@ -76,6 +61,36 @@ export USER_TOKEN=""
 docker run -d -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN midjourney-api-php:latest
 
 ```
+
+or
+
+
+Raspberry 
+
+```bash
+docker pull arm32v7/composer
+docker tag  arm32v7/composer composer:latest
+docker rmi  arm32v7/composer
+
+export DISCORD_CHANNEL_ID=""
+export USER_TOKEN=""
+
+docker run -it --security-opt seccomp=unconfined  -v $PWD:/app -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN  composer:latest sh
+composer install
+exit
+
+docker run -d --security-opt seccomp=unconfined  -v $PWD:/app -p 8062:8062 -e DISCORD_CHANNEL_ID=$DISCORD_CHANNEL_ID  -e USER_TOKEN=$USER_TOKEN  composer:latest ./runserver.sh
+
+
+# to stop
+
+docker ps
+docker stop [CONTAINER ID]
+
+```
+
+
+
 
 Testing
 
