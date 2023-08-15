@@ -1,7 +1,7 @@
 FROM composer:latest
 WORKDIR /app
 ADD . /app
-RUN ls -lah 
+RUN composer install
 ENTRYPOINT ["sh", "runserver.sh"]
 EXPOSE 8062
 
